@@ -14,34 +14,37 @@ export const TopBar = () => {
   const colorMode = useContext(ColorModeContext);
 
   return (
-    <Box display={"flex"} justifyContent={"space-between"} p={2}>
+    <Box display={"flex"} justifyContent={"space-between"} p={2} sx={{ backgroundColor: colors.primary[400] }}>
       {/* SEARCH BAR */}
       <Box
         display={"flex"}
-        backgroundColor={colors.primary[400]}
+        backgroundColor={colors.primary[500]}
         borderRadius={"3px"}
       >
         <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
-        <IconButton type="button" sx={{ p: 1 }}>
+        <IconButton type="button" sx={{ p: 1, color: colors.grey[300] }}>
           <SearchIcon />
         </IconButton>
       </Box>
       {/* ICONS */}
       <Box>
-        <IconButton onClick={colorMode.toggleColorMode}>
+        <IconButton
+          onClick={colorMode.toggleColorMode}
+          sx={{ color: colors.grey[300] }}
+        >
           {theme.palette.mode === "dark" ? (
             <DarkModeOutlinedIcon />
           ) : (
             <LightModeOutlinedIcon />
           )}
         </IconButton>
-        <IconButton>
+        <IconButton sx={{ color: colors.grey[300] }}>
           <NotificationsOutlinedIcon />
         </IconButton>
-        <IconButton>
+        <IconButton sx={{ color: colors.grey[300] }}>
           <SettingsOutlinedIcon />
         </IconButton>
-        <IconButton>
+        <IconButton sx={{ color: colors.grey[300] }}>
           <PersonOutlinedIcon />
         </IconButton>
       </Box>

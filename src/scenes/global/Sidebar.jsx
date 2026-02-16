@@ -46,9 +46,11 @@ export const SideBar = () => {
         },
         "& .ps-menu-icon": {
           backgroundColor: "transparent !important",
+          color: `${colors.grey[300]} !important`,
         },
         "& .ps-menu-button": {
           padding: "5px 35px 5px 20px !important",
+          transition: "padding 0.3s ease-in-out !important",
         },
         "& .ps-menu-button:hover": {
           color: "#868dfb !important",
@@ -57,9 +59,13 @@ export const SideBar = () => {
         "& .ps-active": {
           color: "#6870fa !important",
         },
+        "& .ps-sidebar-root": {
+          border: "none !important",
+          transition: "width 0.3s ease-in-out !important",
+        },
       }}
     >
-      <Sidebar collapsed={isCollapsed}>
+      <Sidebar collapsed={isCollapsed} transitionDuration={400}>
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
           <MenuItem
@@ -77,7 +83,7 @@ export const SideBar = () => {
               ml="15px"
               sx={{
                 transition:
-                  "opacity 0.4s ease-in-out, visibility 0.4s ease-in-out",
+                  "opacity 0.3s ease-in-out, visibility 0.3s ease-in-out",
                 opacity: isCollapsed ? 0 : 1,
                 visibility: isCollapsed ? "hidden" : "visible",
                 height: isCollapsed ? 0 : "auto",
@@ -87,7 +93,10 @@ export const SideBar = () => {
               <Typography variant="h6" color={colors.grey[300]}>
                 ADMINIS
               </Typography>
-              <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
+              <IconButton
+                onClick={() => setIsCollapsed(!isCollapsed)}
+                sx={{ color: colors.grey[300] }}
+              >
                 <MenuOutlinedIcon />
               </IconButton>
             </Box>
@@ -96,13 +105,13 @@ export const SideBar = () => {
           {/* USERS */}
           <Box
             sx={{
-              transition:
-                "opacity 0.3s ease-in-out, transform 0.3s ease-in-out, max-height 0.3s ease-in-out",
+              transition: "all 0.3s ease-in-out",
               opacity: isCollapsed ? 0 : 1,
               maxHeight: isCollapsed ? 0 : "200px",
               overflow: "hidden",
-              transform: isCollapsed ? "scale(0.8)" : "scale(1)",
+              transform: isCollapsed ? "scale(0.1)" : "scale(1)",
               mb: isCollapsed ? 0 : "15px",
+              pointerEvents: isCollapsed ? "none" : "auto",
             }}
           >
             <Box display="flex" justifyContent="center" alignItems="center">
@@ -132,8 +141,11 @@ export const SideBar = () => {
 
           {/* Menu Items */}
           <Box
-            sx={{ fontSize: "10px" }}
-            paddingLeft={isCollapsed ? undefined : "5%"}
+            sx={{
+              fontSize: "10px",
+              paddingLeft: isCollapsed ? "0" : "5%",
+              transition: "padding-left 0.3s ease-in-out",
+            }}
           >
             <Item
               title="Dashboard"
